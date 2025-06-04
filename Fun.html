@@ -1,0 +1,58 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success Result Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 2rem; }
+    #result, #finalResult { display: none; margin-top: 1.5rem; }
+    button, select { padding: 0.8rem 1.5rem; font-size: 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>  <h1>2025 Success Prophecy 🔮</h1>
+  <p>Select what you're working on:</p>
+  <select id="goalSelect">
+    <option value="business">Business</option>
+    <option value="education">Education</option>
+    <option value="tech">Tech Skill</option>
+    <option value="sidehustle">Side Hustle</option>
+    <option value="writing">Writing</option>
+  </select><br><br> <button id="generateBtn">Generate My Result</button>
+
+  <div id="result">
+    <p>Before you see your result, share to WhatsApp status 👇</p>
+    <a id="shareLink" href="#" target="_blank">
+      <button id="shareBtn">📤 Share to WhatsApp Status</button>
+    </a>
+  </div>  <div id="finalResult"></div>  <script>
+    const generateBtn = document.getElementById('generateBtn');
+    const result = document.getElementById('result');
+    const finalResult = document.getElementById('finalResult');
+    const shareBtn = document.getElementById('shareBtn');
+    const shareLink = document.getElementById('shareLink');
+    const goalSelect = document.getElementById('goalSelect');
+
+    let goal = '';
+    let percentage = 0;
+    const siteUrl = 'https://yourwebsite.com'; // Replace with actual site URL
+
+    generateBtn.addEventListener('click', () => {
+      goal = goalSelect.value;
+      percentage = Math.floor(80 + Math.random() * 20);
+      const shareText = `I just got my 2025 Success Prophecy for my ${goal}! 🔮\n🎯 It says I'm ${percentage}% successful already!\nCheck yours too 👉 ${siteUrl} #SuccessProphecy2025`;
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+      shareLink.href = whatsappUrl;
+      result.style.display = 'block';
+      generateBtn.disabled = true;
+    });
+
+    shareBtn.addEventListener('click', () => {
+      // Show result after short delay
+      setTimeout(() => {
+        finalResult.style.display = 'block';
+        finalResult.innerHTML = `<h2>🎉 You will be ${percentage}% successful in your ${goal} journey this year!</h2><p>Stay focused and consistent. Your time has come 💪</p>`;
+        shareBtn.disabled = true;
+      }, 3000);
+    });
+  </script></body>
+</html>
